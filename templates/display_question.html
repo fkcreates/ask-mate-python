@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question {{ question_id }}</title>
+</head>
+<body>
+<h1>Question Details</h1>
+{% for row in questions %}
+    {% if row["id"] == question_id %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Submission time</th>
+                    <th>View number</th>
+                    <th>Vote number</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ row["id"] }}</td>
+                    <td>{{ row["sumbission_time"] }}</td>
+                    <td>{{ row["view_number"] }}</td>
+                    <td>{{ row["vote_number"] }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>{{ row["title"] }}</h2>
+        <h3>{{ row["message"] }}</h3>
+    {% endif %}
+{% endfor %}
+<table>
+    <thead>
+        <tr>
+            <th>Submission time</th>
+            <th>Vote number</th>
+            <th>Answer</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in answers %}
+        {% if row["question_id"] == question_id %}
+            <tr>
+                <td>{{ row["submission_time"] }}</td>
+                <td>{{ row["vote_number"] }}</td>
+                <td>{{ row["message"] }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
