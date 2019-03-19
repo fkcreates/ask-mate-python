@@ -10,7 +10,8 @@ app = Flask(__name__)
 @app.route('/list')
 def list_questions():
     questions = data_manager.get_all_questions()
-    return render_template("list_questions.html", questions=questions)
+    sorted_questions = util.sort_questions_by_timestamp()
+    return render_template("list_questions.html", questions=sorted_questions)
 
 
 @app.route('/question/<question_id>')
