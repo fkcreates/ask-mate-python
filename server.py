@@ -66,7 +66,7 @@ def add_new_answer(question_id):
 
     data_manager.write_answers(new_answer)
 
-    return redirect(f"/question/{question_id}")
+    return redirect(url_for("display_question", question_id=question_id))
 
 
 
