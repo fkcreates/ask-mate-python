@@ -24,7 +24,7 @@ def generate_question_id():
 
 
 def generate_answer_id():
-    max_id = len(connection.read_data_from_file(connection.ANSWERS_PATH))
+    max_id = len(connection.read_data_from_file(connection.ANSWERS_PATH)) - 1
     generated_id = max_id + 1
     return generated_id
 

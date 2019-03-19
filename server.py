@@ -31,6 +31,7 @@ def display_question(question_id: int):
 def route_add_question():
     return render_template("new_question_form.html")
 
+
 @app.route("/add-question", methods=["POST"])
 def add_new_question():
 
@@ -46,10 +47,26 @@ def add_new_question():
     data_manager.write_questions(new_question)
     return redirect("/")
 
-@app.route("/new-answer", methods=["GET"])
-def add_new_answer():
-    return render_template("new_answer_form.html")
 
+@app.route("/question/<int:question_id>/new-answer", methods=["GET"])
+def route_add_answer(question_id):
+    return render_template("new_answer_form.html", question_id=question_id)
+
+
+@app.route("/question/<question_id>/new-answer", methods=["POST"])
+def add_new_answer(question_id):
+
+    new_answer = {
+        "id": data_manager.generate_answer_id(),
+        "submission_time": util.get_current_time(),
+        "vote_number": 0,
+        "question_id": question_id,
+        "message": request.form.get("message"),
+    }
+
+    data_manager.write_answers(new_answer)
+
+    return redirect(f"/question/{question_id}")
 
 
 

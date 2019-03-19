@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Write a new answer</title>
+    <title>Write a new answer for question {{ question_id }}</title>
 </head>
 <body>
 <h1>Write a new answer</h1>
-<form action="{{ url_for("add_new_answer") }}" method="post">
+<form action="{{ url_for("route_add_answer", question_id=question_id) }}" method="post">
     <textarea name="message" minlength="10" rows="15" cols="60" required></textarea><br>
     <button type="submit">Submit answer</button>
 </form>
