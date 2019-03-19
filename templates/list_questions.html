@@ -27,8 +27,7 @@
             <td>{{ row["view_number"] }}</td>
             <td>{{ row["vote_number"] }}</td>
             <td><a href="{{ url_for("display_question", question_id=row["id"])}}">{{ row["title"] }}</a></td>
-            <td>{{ row["image"] }}</td>
-
+            <td><img src="static/{{ row["image"] }}" alt="image" height="50"></td>
         </tr>
     {% endfor %}
     </tbody>
