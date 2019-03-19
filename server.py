@@ -17,9 +17,10 @@ def list_questions():
 @app.route('/question/<question_id>')
 def display_question(question_id: int):
     answers = data_manager.get_all_answers()
+    sorted_anwers = util.sort_answers_by_timestamp()
     questions = data_manager.get_all_questions()
 
-    return render_template("display_question.html", answers=answers, questions=questions, question_id=question_id)
+    return render_template("display_question.html", answers=sorted_anwers, questions=questions, question_id=question_id)
 
 
 @app.route("/add-question", methods=["GET"])
