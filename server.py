@@ -46,6 +46,12 @@ def add_new_question():
     data_manager.write_questions(new_question)
     return redirect("/")
 
+@app.route("/new-answer", methods=["GET"])
+def add_new_answer():
+    return render_template("new_answer_form.html")
+
+
+
 
 if __name__ == "__main__":
     app.run(

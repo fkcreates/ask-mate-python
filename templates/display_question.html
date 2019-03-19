@@ -5,6 +5,7 @@
     <title>Question {{ question_id }}</title>
 </head>
 <body>
+<p><a href="/">Go back to main page</a></p>
 <h1>Question Details</h1>
 {% for row in questions %}
     {% if row["id"] == question_id %}
@@ -50,7 +51,7 @@
     {% endfor %}
     </tbody>
 </table>
-
+<h3><a href="{{ url_for("add_new_answer") }}">Write an answer</a></h3>
 
 
 </body>
