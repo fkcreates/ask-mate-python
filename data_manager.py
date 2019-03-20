@@ -35,3 +35,10 @@ def write_questions(dictionary):
 
 def write_answers(dictionary):
     return connection.write_data_to_file(dictionary, connection.ANSWERS_PATH, connection.ANSWERS_HEADER)
+
+
+def delete_question(question_id):
+    return connection.delete_question_from_file(question_id)
+
+def delete_answer_by_question_id(question_id):
+    return connection.delete_answer_by_question_id(question_id)

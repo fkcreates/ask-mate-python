@@ -27,8 +27,29 @@ def write_data_to_file(dictionary, filename, fieldnames):
             writer.writerow(row)
         writer.writerow(dictionary)
 
+def delete_question_from_file(question_id):
+    data = read_data_from_file(QUESTIONS_PATH)
 
+    with open(QUESTIONS_PATH, "w") as file:
+        writer = csv.DictWriter(file, QUESTIONS_HEADER)
+        writer.writeheader()
 
+        for row in data:
+            if row["id"] != question_id:
+                writer.writerow(row)
 
+    return data
 
+def delete_answer_by_question_id(question_id):
+    data = read_data_from_file(ANSWERS_PATH)
+
+    with open(ANSWERS_PATH, "w") as file:
+        writer = csv.DictWriter(file, ANSWERS_HEADER)
+        writer.writeheader()
+
+        for row in data:
+            if row["question_id"] != question_id:
+                writer.writerow(row)
+
+    return data
 

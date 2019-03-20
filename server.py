@@ -68,6 +68,18 @@ def add_new_answer(question_id):
 
     return redirect(url_for("display_question", question_id=question_id))
 
+@app.route("/question/<question_id>/delete", methods=["GET"])
+def confirm_delete_question(question_id):
+    return render_template("confirm_delete_question.html", question_id=question_id)
+
+
+@app.route("/question/<question_id>/delete", methods=["POST"])
+def delete_question(question_id):
+
+    data_manager.delete_question(question_id)
+    data_manager.delete_answer_by_question_id(question_id)
+
+    return redirect(url_for("list_questions"))
 
 
 if __name__ == "__main__":

@@ -1,12 +1,10 @@
 id,submission_time,vote_number,question_id,message,image
 0,1493398154,5,0,You need to use brackets: my_list = [],
 1,1493088154,35,0,Look it up in the Python docs,
-2,1553005252,0,4,szerintem jo,
-3,1553005396,0,1,hkhljp;jijolo,
 4,1553005512,0,1,ghjklkjhgftyuioijh,
-5,1553005613,0,1,"tyuioiuytrtyuiopoiuytr
-",
+5,1553005613,0,1,tyuioiuytrtyuiopoiuytr,
 6,1553005807,0,1,lkjhgfdfyuiuytrd,
 7,1553005850,0,1,asdfwertyuio,
 8,1553005857,0,1,1234567890-,
 9,1553006101,0,1,12345678909876543245678,
+10,1553079125,0,0,tyuioiuytrtyuiopiuyt,
