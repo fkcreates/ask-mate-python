@@ -43,3 +43,6 @@ def delete_question(question_id):
 
 def delete_answer_by_question_id(question_id):
     return connection.delete_answer_by_question_id(question_id)
+
+def delete_answer_by_answer_id(answer_id):
+    return connection.delete_answer_by_answer_id(answer_id)

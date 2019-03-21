@@ -38,6 +38,7 @@
             <th>Submission time</th>
             <th>Vote number</th>
             <th>Answer</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -47,6 +48,7 @@
                 <td>{{ row["submission_time"] }}</td>
                 <td>{{ row["vote_number"] }}</td>
                 <td>{{ row["message"] }}</td>
+                <td><a href="{{ url_for("delete_answer", answer_id=row["id"], question_id=row["question_id"]) }}">DELETE ANSWER</a></td>
             </tr>
         {% endif %}
     {% endfor %}

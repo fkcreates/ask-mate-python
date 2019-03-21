@@ -18,8 +18,8 @@ def list_questions():
 @app.route('/question/<question_id>')
 def display_question(question_id: int):
 
-    sorted_anwers = util.sort_answers_by_timestamp()
-    sorted_answers_date_format = util.get_date_format_for_sorted_data(sorted_anwers)
+    sorted_answers = util.sort_answers_by_timestamp()
+    sorted_answers_date_format = util.get_date_format_for_sorted_data(sorted_answers)
 
     sorted_questions = util.sort_questions_by_timestamp()
     sorted_questions_date_format = util.get_date_format_for_sorted_data(sorted_questions)
@@ -81,6 +81,13 @@ def delete_question(question_id):
     data_manager.delete_answer_by_question_id(question_id)
 
     return redirect(url_for("list_questions"))
+
+@app.route('/answer/<answer_id>/delete')
+def delete_answer(answer_id):
+    question_id = request.args.get("question_id")
+    data_manager.delete_answer_by_answer_id(answer_id)
+
+    return redirect(url_for("display_question", question_id=question_id))
 
 
 if __name__ == "__main__":
