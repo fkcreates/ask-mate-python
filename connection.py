@@ -1,10 +1,13 @@
 import csv
 import os
+
+
 QUESTIONS_HEADER = ["id", "submission_time", "view_number", "vote_number", "title", "message", "image"]
 ANSWERS_HEADER = ["id", "submission_time", "vote_number", "question_id", "message", "image"]
 
 ANSWERS_PATH = "sample_data/answer.csv"
 QUESTIONS_PATH = "sample_data/question.csv"
+
 
 def read_data_from_file(filename):
     data = []
@@ -16,6 +19,7 @@ def read_data_from_file(filename):
 
     return data
 
+
 def write_data_to_file(dictionary, filename, fieldnames):
     data = read_data_from_file(filename)
 
@@ -26,6 +30,7 @@ def write_data_to_file(dictionary, filename, fieldnames):
         for row in data:
             writer.writerow(row)
         writer.writerow(dictionary)
+
 
 def delete_question_from_file(question_id):
     data = read_data_from_file(QUESTIONS_PATH)
@@ -40,6 +45,7 @@ def delete_question_from_file(question_id):
 
     return data
 
+
 def delete_answer_by_question_id(question_id):
     data = read_data_from_file(ANSWERS_PATH)
 
@@ -52,4 +58,3 @@ def delete_answer_by_question_id(question_id):
                 writer.writerow(row)
 
     return data
-

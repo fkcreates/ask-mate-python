@@ -33,6 +33,5 @@ def get_date_format_for_sorted_data(data):
     for row in data:
         timestamp = int(row["submission_time"])
         row["submission_time"] = datetime.utcfromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M")
-
     return data
 

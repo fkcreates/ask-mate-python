@@ -18,15 +18,15 @@ def get_all_answers():
 
 
 def generate_question_id():
-    max_id = len(connection.read_data_from_file(connection.QUESTIONS_PATH)) - 1
-    generated_id = max_id + 1
-    return generated_id
+    file = connection.read_data_from_file(connection.QUESTIONS_PATH)
+    list_of_ids = [item["id"] for item in file]
+    return int(list_of_ids[-1])+1
 
 
 def generate_answer_id():
-    max_id = len(connection.read_data_from_file(connection.ANSWERS_PATH)) - 1
-    generated_id = max_id + 1
-    return generated_id
+    file = connection.read_data_from_file(connection.ANSWERS_PATH)
+    list_of_ids = [item["id"] for item in file]
+    return int(list_of_ids[-1]) + 1
 
 
 def write_questions(dictionary):
@@ -39,6 +39,7 @@ def write_answers(dictionary):
 
 def delete_question(question_id):
     return connection.delete_question_from_file(question_id)
+
 
 def delete_answer_by_question_id(question_id):
     return connection.delete_answer_by_question_id(question_id)

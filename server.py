@@ -68,6 +68,7 @@ def add_new_answer(question_id):
 
     return redirect(url_for("display_question", question_id=question_id))
 
+
 @app.route("/question/<question_id>/delete", methods=["GET"])
 def confirm_delete_question(question_id):
     return render_template("confirm_delete_question.html", question_id=question_id)
