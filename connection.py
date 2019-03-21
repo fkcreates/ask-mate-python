@@ -69,3 +69,17 @@ def delete_answer_by_answer_id(answer_id):
         for row in data:
             if row["id"] != answer_id:
                 writer.writerow(row)
+
+def update_question(new_line, question_id):
+    data = read_data_from_file(QUESTIONS_PATH)
+
+    with open(QUESTIONS_PATH, "w") as file:
+        writer = csv.DictWriter(file, fieldnames=QUESTIONS_HEADER)
+        writer.writeheader()
+        for question in data:
+            if question["id"] == question_id:
+                writer.writerow(new_line)
+            else:
+                writer.writerow(question)
+
+    return data

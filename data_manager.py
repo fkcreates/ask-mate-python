@@ -46,3 +46,6 @@ def delete_answer_by_question_id(question_id):
 
 def delete_answer_by_answer_id(answer_id):
     return connection.delete_answer_by_answer_id(answer_id)
+
+def update_question(edited_question, question_id):
+    return connection.update_question(edited_question, question_id)

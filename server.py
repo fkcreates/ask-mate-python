@@ -82,10 +82,34 @@ def delete_question(question_id):
 
     return redirect(url_for("list_questions"))
 
+
 @app.route('/answer/<answer_id>/delete')
 def delete_answer(answer_id):
     question_id = request.args.get("question_id")
     data_manager.delete_answer_by_answer_id(answer_id)
+
+    return redirect(url_for("display_question", question_id=question_id))
+
+
+@app.route("/question/<question_id>/edit", methods=["GET"])
+def route_edit_question(question_id):
+    data = data_manager.get_all_questions()
+    return render_template("edit_question_form.html", question_id=question_id, questions=data)
+
+@app.route('/question/<question_id>/edit', methods=[ "POST"])
+def edit_question(question_id):
+
+    edited_question = {
+        "id": question_id,
+        "submission_time": util.get_current_time(),
+        "view_number": 0,
+        "vote_number": 0,
+        "title": request.form.get("title"),
+        "message": request.form.get("message"),
+    }
+
+
+    questions = data_manager.update_question(edited_question, question_id)
 
     return redirect(url_for("display_question", question_id=question_id))
 

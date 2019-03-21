@@ -32,6 +32,7 @@
         <h3>{{ row["message"] }}</h3>
     {% endif %}
 {% endfor %}
+<a href="{{ url_for("edit_question", question_id=question_id) }}">EDIT question</a>
 <table>
     <thead>
         <tr>
